@@ -5,6 +5,8 @@ public class Solve {
 
     public Solve() {
 
+        double[] coeff = new double[3];
+
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
@@ -12,20 +14,31 @@ public class Solve {
             if(scanner.hasNext("stop") || scanner.hasNext("Stop")) {
                 break;
             }
-            double a = scanner.nextInt();
+            coeff[0] = scanner.nextInt();
+            if(coeff[0] == 0) {
+                System.out.println("Not a quadratic equation");
+            }
             System.out.print("b: ");
-            double b = scanner.nextInt();
+            coeff[1] = scanner.nextInt();
             System.out.print("c: ");
-            double c = scanner.nextInt();
+            coeff[2] = scanner.nextInt();
 
-            double a1 = 0;
-            double a2 = 0;
-            double c1 = 0;
-            double c2 = 0;
-            double x1 = 0;
-            double x2 = 0;
+            double a1;
+            double a2;
+            double c1;
+            double c2;
+            double x1;
+            double x2;
 
-            Factorise factorise = new Factorise(a, b, c);
+            if(Math.signum(coeff[0]) == -1) {
+                for (int i = 0; i < 3; i++) {
+                    if(coeff[i] != 0) {
+                        coeff[i] = -coeff[i];
+                    }
+                }
+            }
+
+            Factorise factorise = new Factorise(coeff[0], coeff[1], coeff[2]);
             a1 = factorise.a1;
             a2 = factorise.a2;
             c1 = factorise.c1;
@@ -43,7 +56,12 @@ public class Solve {
 
             DecimalFormat decimalFormat = new DecimalFormat();
 
-            System.out.println("x={" + decimalFormat.format(x1) + "," + decimalFormat.format(x2) + "}");
+            if(x1 == x2) {
+                System.out.println("x=" + decimalFormat.format(x1));
+            }
+            else {
+                System.out.println("x={" + decimalFormat.format(x1) + "," + decimalFormat.format(x2) + "}");
+            }
         }
     }
 }
