@@ -23,10 +23,6 @@ public class Solve {
             System.out.print("c: ");
             coeff[2] = scanner.nextInt();
 
-            double a1;
-            double a2;
-            double c1;
-            double c2;
             double x1;
             double x2;
 
@@ -38,21 +34,9 @@ public class Solve {
                 }
             }
 
-            Factorise factorise = new Factorise(coeff[0], coeff[1], coeff[2]);
-            a1 = factorise.a1;
-            a2 = factorise.a2;
-            c1 = factorise.c1;
-            c2 = factorise.c2;
-
-            if (c1 != 0) {
-                c1 *= -1;
-            }
-            if (c2 != 0) {
-                c2 *= -1;
-            }
-
-            x1 = c1 / a1;
-            x2 = c2 / a2;
+            Square square = new Square(coeff[0], coeff[1], coeff[2]);
+            x1 = square.x1;
+            x2 = square.x2;
 
             DecimalFormat decimalFormat = new DecimalFormat();
 
