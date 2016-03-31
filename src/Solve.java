@@ -34,9 +34,9 @@ public class Solve {
                 }
             }
 
-            Square square = new Square(coeff[0], coeff[1], coeff[2]);
-            x1 = square.x1;
-            x2 = square.x2;
+            QuadraticFormula formula = new QuadraticFormula(coeff[0], coeff[1], coeff[2]);
+            x1 = formula.x1;
+            x2 = formula.x2;
 
             DecimalFormat decimalFormat = new DecimalFormat();
 
